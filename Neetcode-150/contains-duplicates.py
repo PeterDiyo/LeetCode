@@ -26,3 +26,18 @@ def containsDuplicate(nums):
         if nums[i] == nums[i - 1]:
             return True
     return False
+
+
+
+"""
+Hash set:
+- Use a hash set to track seen elements. If an element is already in the set, return true. Otherwise, add it to the set.
+- Time complexity: O(n) on average
+"""
+def containsDuplicate(nums):
+    seen = set()
+    for element in nums:
+        if element in seen:
+            return True
+        seen.add(element)
+    return False
