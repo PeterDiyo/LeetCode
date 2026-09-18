@@ -3,7 +3,7 @@
 # Example: nums = [1,2,3,1] -> Output: true, nums = [1,2,3,4] -> Output: false.
 
 """
-Brute force solution:
+Brute force:
 - Iterate through the array using two nested loops and check if any two elements are equal.
 - Time complexity: O(n^2)
 """
@@ -12,4 +12,17 @@ def containsDuplicate(nums):
         for j in range(i + 1, len(nums)):
             if nums[i] == nums[j]:
                 return True
+    return False
+
+
+"""
+Sorting: 
+- Sort the array and then check if any two adjacent elements are equal.
+- Time complexity: O(n log n) due to sorting.
+"""
+def containsDuplicate(nums):
+    nums.sort()
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i - 1]:
+            return True
     return False
