@@ -12,3 +12,23 @@ def isAnagram(s, t):
     if len(s) != len(t):
         return False
     return sorted(s) == sorted(t)
+
+
+"""
+Hash Map:
+- Count the frequency of each character in both strings and compare the counts.
+- Time complexity: O(n + m) where n and m are the lengths of the strings.
+- Space complexity: O(1) since we have atmost 26 characters (assuming only lowercase letters).
+"""
+def isAnagram(s, t):
+    if len(s) != len(t):
+        return False
+
+    count_s = {}
+    count_t = {}
+
+    for char in range(len(s)):
+        count_s[s[char]] = count_s.get(s[char], 0) + 1
+        count_t[t[char]] = count_t.get(t[char], 0) + 1
+
+    return count_s == count_t
