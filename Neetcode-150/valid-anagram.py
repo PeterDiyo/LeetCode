@@ -18,7 +18,7 @@ def isAnagram(s, t):
 Hash Map:
 - Count the frequency of each character in both strings and compare the counts.
 - Time complexity: O(n + m) where n and m are the lengths of the strings.
-- Space complexity: O(1) since we have atmost 26 characters (assuming only lowercase letters).
+- Space complexity: O(m + n) since we have atmost 26 characters (assuming only lowercase letters).
 """
 def isAnagram(s, t):
     if len(s) != len(t):
@@ -53,3 +53,17 @@ def isAnagram(s, t):
         if val != 0:
             return False
     return True
+
+"""
+The solution above uses a frequency counting strategy. Here is a simplified breakdown of how it works:
+
+- Quick Rejection: First, it checks if the string lengths match. If they differ, they cannot be anagrams, so we stop early.
+- The Scoreboard: We create a list of 26 zeros (count = [0] * 26). Each slot represents a letter from 'a' to 'z'.
+- Balancing Act: Inside the loop:
+  - Characters from s add +1 to their specific slot.
+  - Characters from t subtract -1 from their specific slot.
+- ord() - ord('a') converts each character into a number between 0 and 25 (its position in the alphabet).
+- Final Verification: If the strings are true anagrams, every added point must be exactly canceled out. Therefore, every value in the list must end up as 0.
+- Key Takeaway: Instead of comparing sorted lists or counting two separate dictionaries, you use addition/subtraction to track differences in a single pass.
+
+"""
